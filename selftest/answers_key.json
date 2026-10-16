@@ -1,0 +1,93 @@
+[
+ {
+  "id": "mul0",
+  "q": "3185 * 9434 = ?",
+  "ans": 30047290
+ },
+ {
+  "id": "mul1",
+  "q": "7720 * 9974 = ?",
+  "ans": 76999280
+ },
+ {
+  "id": "mul2",
+  "q": "5857 * 8275 = ?",
+  "ans": 48466675
+ },
+ {
+  "id": "modexp0",
+  "q": "13^16 mod 101 = ?",
+  "ans": 37
+ },
+ {
+  "id": "modexp1",
+  "q": "35^27 mod 97 = ?",
+  "ans": 1
+ },
+ {
+  "id": "count0",
+  "q": "How many 'r' in: bfrrffrfffafafedcedfffceddadfdcaeebffadbeecrbrbc",
+  "ans": 5
+ },
+ {
+  "id": "count1",
+  "q": "How many 'b' in: ebrarrrdddacbrabrcfcfadceefaacacaeradfffarbdeafb",
+  "ans": 5
+ },
+ {
+  "id": "weekday0",
+  "q": "Weekday of 2057-04-11? (English name)",
+  "ans": "Wednesday"
+ },
+ {
+  "id": "weekday1",
+  "q": "Weekday of 1982-08-03? (English name)",
+  "ans": "Tuesday"
+ },
+ {
+  "id": "sort",
+  "q": "Sort ascending: [-372, 23, 252, 343, 111, -49, 123, -164, -288, 339, -16, 436]",
+  "ans": [
+   -372,
+   -288,
+   -164,
+   -49,
+   -16,
+   23,
+   111,
+   123,
+   252,
+   339,
+   343,
+   436
+  ]
+ },
+ {
+  "id": "reverse",
+  "q": "Reverse the string: uaopcmznbvvjwuncp",
+  "ans": "pcnuwjvvbnzmcpoau"
+ },
+ {
+  "id": "primes",
+  "q": "How many primes in [4036, 4136]?",
+  "ans": 12
+ },
+ {
+  "id": "bool",
+  "q": "With {'P': False, 'Q': False, 'R': False, 'S': True}, evaluate: ((P and not Q) or (R != S)) and not (Q and R) or (S and P and not R)",
+  "ans": true
+ },
+ {
+  "id": "hex",
+  "q": "Convert 1427975 to hexadecimal (lowercase, no 0x)",
+  "ans": "15ca07"
+ },
+ {
+  "id": "needle",
+  "q": "Read selftest/haystack.txt: what is the secret code? On which line (1-based)?",
+  "ans": {
+   "code": "47920373",
+   "line": 109
+  }
+ }
+]

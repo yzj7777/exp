@@ -1,0 +1,17 @@
+{
+ "mul0": 30047290,
+ "mul1": 76999280,
+ "mul2": 48466675,
+ "modexp0": 37,
+ "modexp1": 1,
+ "count0": 5,
+ "count1": 5,
+ "weekday0": "Wednesday",
+ "weekday1": "Tuesday",
+ "sort": [-372, -288, -164, -49, -16, 23, 111, 123, 252, 339, 343, 436],
+ "reverse": "pcnuwjvvbnzmcpoau",
+ "primes": 12,
+ "bool": true,
+ "hex": "15ca07",
+ "needle": {"code": "47920373", "line": 109}
+}

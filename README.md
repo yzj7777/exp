@@ -26,8 +26,7 @@ self_loop/
 │   ├── TODO.md        课题原文 + 开放问题队列
 │   ├── PROGRESS.md    已验证发现（iter 0 = 会话 1 的成果种子）
 │   └── ITERATIONS.md  逐轮日志（审计轨迹）
-├── examples/          演示课题"量子纠错"的完整 2 轮运行样例
-└── claude-code-kit/   模式 B：Claude Code CLI 版（headless 循环 + Stop hook）
+└── examples/          演示课题"量子纠错"的完整 2 轮运行样例
 ```
 
 ## 工作原理（为什么是"无限"）
@@ -37,10 +36,3 @@ self_loop/
   新回合先 `tick.sh` 从磁盘恢复 = 零记忆损失。
 - **终点**：信息饱和（TODO 耗尽 或 连续 2 轮零新发现）→ 自动写 REPORT.md。
   防空转：禁止重复已覆盖问题；不编造来源；冲突需 ≥2 独立来源裁决。
-
-## 模式 B（可选）：Claude Code CLI 版
-
-`self_loop/claude-code-kit/` —— 给 Claude Code 2.1+ 用的同一套机制：
-`research-loop.sh`（headless while 循环，fresh-context + 状态落盘）与
-`hooks/ralph-stop.sh` + `enable-stop-hook.sh`（交互式 Stop hook，= 官方 ralph-loop 插件机制）。
-需要 `ANTHROPIC_API_KEY` 且机器可访问 api.anthropic.com。

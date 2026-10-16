@@ -1,5 +1,0 @@
-# claude-code-kit headless 循环的原始输出（可再生）
-research/
-# 本机 claude code 设置（与机器相关）
-.claude/
-*.log

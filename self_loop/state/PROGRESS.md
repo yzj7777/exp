@@ -25,4 +25,3 @@
 ### B. 本工具自身的诞生（meta 发现）
 - **self_loop 就是该课题的一个完整实现**：固定提示词（PROTOCOL.md，每轮原样执行）+ 状态机（tick.sh + state/ 三文件）+ 回合内自动迭代 + `ask_user` 跨回合心跳。"直到极限上下文"通过**回合滚动**实现：撞墙即滚入新回合，磁盘状态无损。
 - 已在演示课题"量子纠错"上跑通 **2 轮全自动迭代**（含 1 处来源冲突的交叉裁决：Willow=105 qubit，arXiv:2408.13687），示例见 `self_loop/examples/quantum-error-correction-demo/`。
-- **模式 B（Claude Code CLI 版）**：`self_loop/claude-code-kit/`（headless while 循环 + Stop hook 插件机制的等价实现；Claude Code 2.1.301 已在会话 1 安装并验证脚本逻辑；沙箱无 API key 且出口白名单拦截 api.anthropic.com，需在可联网机器运行）。

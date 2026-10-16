@@ -116,3 +116,17 @@
 - Pasquini et al. *LLMmap: Fingerprinting for Large Language Models*, USENIX Security 2025, arXiv:2407.15847
 - Bruckner. *One Token Is Enough*, arXiv:2607.10252
 - Ong et al. *TOPLOC: A Locality Sensitive Hashing Scheme for Trustless Verifiable Inference*, arXiv:2501.16007
+
+---
+
+## 附录：没有 API、只能在对话框里测的型号识别工具（2026-10-16 补充）
+
+| 工具 | 使用方式 | 能识别到什么程度 | 主要限制 |
+|---|---|---|---|
+| [xqy2006/ModelTrace](https://github.com/xqy2006/ModelTrace) 的 GitHub Pages 手动版 / [ModelTrace-Portable](https://github.com/wssz527/ModelTrace-Portable)（单文件 HTML） | 复制 3 条挑战发给待测对话，再把完整回答粘贴回工具，归因在浏览器本地计算 | 家族加具体版本（指纹库约 17 个 GPT/Claude 型号） | 闭集：库外模型也会被归到最像的候选；有强 system prompt 的 Agent 环境里准确率下降 |
+| [pasquini-dario/LLMmap](https://github.com/pasquini-dario/LLMmap)（USENIX Sec'25） | `python main_interactive.py`，按提示把约 8 个探针问题的回答粘贴进去；带预训练的开放集模型 | 家族/版本（开放集，可以输出「未知」） | 预训练库偏旧，新模型要自己用 `add_new_template.py` 扩充 |
+| [locuslab/llm-idiosyncrasies](https://github.com/locuslab/llm-idiosyncrasies) | 收集一批回答，用预训练的 LLM2vec 分类器分类 | 只到厂商家族（ChatGPT/Claude/Grok/Gemini/DeepSeek 五分类，约 97%） | 分不出版本；需要 24GB 显卡；分类器训练于 2025 年初 |
+| 知识截止探针：[nexync/dated_data](https://github.com/nexync/dated_data)、按月份递进提问的事件测验 | 按月份询问带日期的事件，看准确率从哪个月开始下降 | 只能估出截止月份，可以作为辅助证据缩小候选 | 不能单独定型；而且官方公布的截止日期和实际探测结果可能不一致 |
+| Glitch token 探针（[GlitchMiner](https://github.com/wooozihui/GlitchMiner)、under-trained tokens 研究） | 让模型复述特定异常 token，看它是否复述失败 | 推断 tokenizer 所属家族 | 主要对旧版 tokenizer 有效（如 cl100k、Claude 2），新模型基本已修复 |
+
+**结论**：在没有 API 的情况下，只有 ModelTrace（手动版）和 LLMmap（交互版）能做到**家族加版本**级别的识别，其余工具只能识别家族或作为辅助证据。**没有任何工具能测出参数量或量化精度。**

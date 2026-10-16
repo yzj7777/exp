@@ -1,0 +1,5 @@
+private_key.json
+public_key.json
+result.enc
+.task_state/
+__pycache__/

@@ -1,0 +1,22 @@
+const assert = require('node:assert/strict');
+const Agent = require('../web/agent-core.js');
+
+assert.equal(Agent.classify('想整理会议纪要和会后任务').id, 'meeting');
+assert.equal(Agent.classify('客户想自助查询订单物流进度').id, 'order');
+assert.equal(Agent.classify('帮我检查代码里的 bug').id, 'coding');
+assert.equal(Agent.classify('把实验数据分析流程做得清楚').id, 'research');
+assert.equal(Agent.classify('让内部流程简单一些').id, 'general');
+assert.deepEqual(Agent.getOrder('meeting').slice(0, 3), ['pain', 'users', 'flow']);
+assert.match(Agent.getQuestion('pain', 'order'), /客户/);
+assert.equal(Agent.needsClarification('提高效率', 'text'), true);
+assert.equal(Agent.needsClarification('通过统一查看任务，减少会后遗漏', 'text'), false);
+assert.equal(Agent.needsClarification('客户 / 用户', 'choice'), false);
+assert.match(Agent.followup('pain', 'meeting'), /具体例子/);
+assert.equal(Agent.mapSupplement('订单查询权限需要客服管理员控制'), 'scope');
+assert.deepEqual(Agent.skippedAnswer(), {value:'用户暂时跳过，尚未提供',status:'open',source:'skip'});
+assert.deepEqual(Agent.skippedAnswer('已有回答'), {value:'已有回答；用户暂时跳过补充澄清',status:'open',source:'skip'});
+assert.deepEqual(Agent.editedAnswer('  由用户修改确认  '), {value:'由用户修改确认',status:'confirmed',source:'user-edit'});
+assert.equal(Agent.editedAnswer('待确认').status, 'open');
+assert.equal(Agent.provenanceLabel(Agent.skippedAnswer()), '用户跳过（待确认）');
+assert.equal(Agent.provenanceLabel(null), '尚未收集');
+console.log('agent-core tests passed');
